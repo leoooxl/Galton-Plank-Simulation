@@ -1,4 +1,3 @@
-# Créé par akira, le 09/02/2025 en Python 3.7
 import random
 import matplotlib.pyplot as plt
 import tkinter as tk
