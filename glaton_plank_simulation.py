@@ -70,9 +70,15 @@ class MyWindow(Tk):
         left_frame.pack_propagate(False)
 
         
-        label = Label(self, text='Simulation de la planche de Galton',fg='black', bg='#0caded',justify='center')
+        label = Label(self, text='\n Simulation de la planche de Galton \n',fg='black', bg='#1e7ac7',justify='center', font=('Arial', 14, 'bold'))
         label.pack(side='top', fill='x')
     
+        menu = Label(left_frame, text='Paramètres', font=('Arial',11))
+        menu.pack(side = 'top',fill='x')
+        
+        separator = ttk.Separator(left_frame, orient='horizontal')
+        separator.pack(fill='x')
+        
         billes = Label(left_frame,text='Entrez le nombre de billes :')
         billes.pack(side = 'top', fill = 'x')
         self.nb_billes_entry = Entry(left_frame, textvariable = self.nb_billes)
@@ -83,12 +89,12 @@ class MyWindow(Tk):
         self.nb_colonnes_entry = Entry(left_frame, textvariable = self.nb_colonnes)
         self.nb_colonnes_entry.pack(side='top')
         
-        button = Button(left_frame, text='Valider',bg = '#0caded', command=self.run_simulation)
+        button = Button(left_frame, text='Valider',bg = '#1e7ac7', command=self.run_simulation)
         button.pack(fill='x')
         
         self.billes_label = Label(left_frame, text="Nombre de billes : 0", fg="black")  # Label pour afficher le résultat
         self.billes_label.pack(fill='x')
-        self.colonnes_label = Label(left_frame,text='Nombre de colonnes:0',fg='black')
+        self.colonnes_label = Label(left_frame,text='Nombre de colonnes: 0',fg='black')
         self.colonnes_label.pack(fill='x')
         
         self.graph_frame = Frame(self, bg='#f0f0f0')
@@ -116,7 +122,7 @@ class MyWindow(Tk):
 
         self.figure, ax = plt.subplots(figsize=(6, 4))
 
-        ax.bar(x, y, color='blue', alpha=0.6, label='Répartition des billes')
+        ax.bar(x, y, color='#4682b4', alpha=0.6, label='Répartition des billes')
         ax.plot(x_gauss, y_gauss, color='red', linewidth=2, label='Courbe de Gauss')
         ax.set_xlabel('colonnes')
         ax.set_ylabel('Nombres de billes')
@@ -157,7 +163,6 @@ class MyWindow(Tk):
         except ValueError:
                     # Gestion des erreurs avec une boîte de message
                     messagebox.showerror("Erreur", "Veuillez entrer un nombre entier valide dans chaque champs avant de valider.")
-
 
 
 # On crée notre fenêtre et on l'affiche
