@@ -13,24 +13,24 @@ class Arbre:
         self.arbre=self.creer_arbre(niveau)
 
     def creer_arbre(self,niveau):
-        """Construit un arbre binaire de profondeur donnée avec des feuilles
-        initialisées à 0."""
+        '''Construit un arbre binaire de profondeur donnée avec des feuilles
+        initialisées à 0.'''
         if niveau==0:
             return [0,[],[]]
         return [None,Arbre(niveau-1),Arbre(niveau-1)]
 
     def est_vide(self):
-        """Vérifie si un arbres est vide."""
+        '''Vérifie si un arbres est vide.'''
         return self.niveau==0
 
     def est_feuille(self,arbre):
-        """Vérifie si un nœud est une feuille."""
+        '''Vérifie si un nœud est une feuille.'''
         return arbre==[]
 
     def inserer_bille(self,niveaux,position,distribution={}):
-        """Fait tomber une bille dans l'arbre jusqu'à une feuille en respectant
+        '''Fait tomber une bille dans l'arbre jusqu'à une feuille en respectant
          la loi binomiale. Cette fonction est dépendante de la fonction
-         laisser_tomber_n_bille(self,nb_billes)"""
+         laisser_tomber_n_bille(self,nb_billes)'''
         if self.niveau==0:
             distribution[position]+=1
             return
@@ -40,9 +40,9 @@ class Arbre:
             self.arbre[2].inserer_bille( niveaux-1, position+1, distribution)
 
     def laisser_tomber_n_billes(self,nb_billes):
-        """Simule la chute d'un nombre de billes dans l'arbre en les
+        '''Simule la chute d'un nombre de billes dans l'arbre en les
         répartissant correctement. Cette fonction est dépendante de la fonction
-        inserer_bille(self,niveaux,position,distribution={})"""
+        inserer_bille(self,niveaux,position,distribution={})'''
 
         distribution={}
         for i in range(0,self.niveau+1):
@@ -90,11 +90,17 @@ class MyWindow(Tk):
         self.nb_colonnes_entry.pack(side='top')
         
         button = Button(left_frame, text='Valider',bg = '#1e7ac7', command=self.run_simulation)
-        button.pack(fill='x')
+        button.pack(fill='x',padx=40, pady=10)
         
-        self.billes_label = Label(left_frame, text="Nombre de billes : 0", fg="black")  # Label pour afficher le résultat
+        separator_2 = ttk.Separator(left_frame, orient='horizontal')
+        separator_2.pack(fill='x')
+        
+        settings = Label(left_frame, text='Paramètres actuels',font=('Arial',11))
+        settings.pack(fill='x')
+        
+        self.billes_label = Label(left_frame, text='Nombre de billes : 0', fg='black',bg='#FFFFFF')  # Label pour afficher les entrées de l'utilisateur
         self.billes_label.pack(fill='x')
-        self.colonnes_label = Label(left_frame,text='Nombre de colonnes: 0',fg='black')
+        self.colonnes_label = Label(left_frame,text='Nombre de colonnes: 0',fg='black',bg='#FFFFFF')
         self.colonnes_label.pack(fill='x')
         
         self.graph_frame = Frame(self, bg='#f0f0f0')
@@ -126,7 +132,6 @@ class MyWindow(Tk):
         ax.plot(x_gauss, y_gauss, color='red', linewidth=2, label='Courbe de Gauss')
         ax.set_xlabel('colonnes')
         ax.set_ylabel('Nombres de billes')
-        ax.set_title('Simulation de la planche de galton')
         ax.legend()
 
         # Intégration du graphe dans Tkinter
@@ -141,15 +146,15 @@ class MyWindow(Tk):
             nb_colonnes = int(self.nb_colonnes.get().strip())
 
             if nb_billes <= 0 :
-                messagebox.showerror("Erreur", "Le nombre de billes doit être un entier positif.")
+                messagebox.showerror('Erreur', 'Le nombre de billes doit être un entier positif.')
                 return 
             if nb_colonnes <= 0:
-                messagebox.showerror("Erreur", "Le nombre de colonnes doit être un entier positif.")
+                messagebox.showerror('Erreur', 'Le nombre de colonnes doit être un entier positif.')
                 return
             print('Nombre de billes :',nb_billes)
             
             # Mise à jour des labels
-            self.billes_label.config(text=f"Nombre de billes : {nb_billes}")
+            self.billes_label.config(text=f'Nombre de billes : {nb_billes}')
             self.colonnes_label.config(text=f'Nombre de colonnes : {nb_colonnes}')
             
             arbre = Arbre(nb_colonnes - 1)  # On soustrait 1 car l'arbre a n-1 niveaux
@@ -162,12 +167,10 @@ class MyWindow(Tk):
             
         except ValueError:
                     # Gestion des erreurs avec une boîte de message
-                    messagebox.showerror("Erreur", "Veuillez entrer un nombre entier valide dans chaque champs avant de valider.")
+                    messagebox.showerror('Erreur', 'Veuillez entrer un nombre entier valide dans chaque champ avant de valider.')
 
 
 # On crée notre fenêtre et on l'affiche
-if __name__ == "__main__" :
+if __name__ == '__main__' :
     window = MyWindow()
     window.mainloop()
-
-
