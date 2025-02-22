@@ -26,7 +26,7 @@ class Arbre:
     def est_feuille(self,arbre):
         '''Vérifie si un nœud est une feuille.'''
         return arbre==[]
-
+ 
     def inserer_bille(self,niveaux,position,distribution={}):
         '''Fait tomber une bille dans l'arbre jusqu'à une feuille en respectant
          la loi binomiale. Cette fonction est dépendante de la fonction
@@ -108,6 +108,9 @@ class MyWindow(Tk):
         
         self.geometry('900x600')
         self.title('Simulation planche de Galton')
+
+        self.bind('<Return>', self.run_simulation)  # Lancer la simulation en appuyant sur la touche Entrée
+
         
         
     def afficher_graphe(self,distribution,n,nb_bille):
@@ -139,7 +142,7 @@ class MyWindow(Tk):
         self.canvas.draw()
         self.canvas.get_tk_widget().pack(fill='both', expand=True)
             
-    def run_simulation(self):     # gestionnaire d'événement
+    def run_simulation(self, event=None):     # gestionnaire d'événement
         try :
             # On récupère les entrées de l'utilisateur
             nb_billes = int(self.nb_billes.get().strip())
