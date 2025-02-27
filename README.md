@@ -11,10 +11,10 @@ La deuxième et grande partie permet de générer toute la fenètre tkinter, les
 L'IA nous a servi afin d'obtenir l'équation de la courbe de Gauss compatible avec Numpy et pour régler certains problèmes d'affichage dans Tkinter mais son impact n'a été que secondaire (débugage).
  
 # Utilisation
-## Prérequis 
+### Prérequis 
 * Avoir installé tous les modules utilisés (tkinter, numpy, matplotlib, PIL, random)
 * Remplir tous les champs de saisie avant de lancer la simulation 
 * Les entrées doivent nécessairement être des entiers naturels positifs 
 
-## Simulation 
+### Simulation 
 Il suffit de cliquer sur le bouton 'Valider' pour lancer la simulation ou d'appuyer sur la touche 'entrée' du clavier. 
