@@ -16,3 +16,5 @@ L'IA nous a servi afin d'obtenir l'équation de la courbe de Gauss compatible av
 * Remplir tous les champs de saisie avant de lancer la simulation 
 * Les entrées doivent nécessairement être des entiers naturels positifs 
 
+## Simulation 
+Il suffit de cliquer sur le bouton 'Valider' pour lancer la simulation ou d'appuyer sur la touche 'entrée' du clavier. 
